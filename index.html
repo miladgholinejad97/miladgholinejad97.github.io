@@ -526,6 +526,246 @@
                 height: 360px;
             }
         }
+        /* =========================
+   Portfolio Gallery
+========================= */
+
+.portfolio-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.portfolio-tab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 50px;
+    padding: 0 20px;
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--muted);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.portfolio-tab span {
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.07);
+    font-size: 11px;
+}
+
+.portfolio-tab:hover {
+    color: var(--text);
+    transform: translateY(-2px);
+}
+
+.portfolio-tab.active {
+    color: #ffffff;
+    border-color: rgba(109, 124, 255, 0.45);
+    background: linear-gradient(
+        135deg,
+        rgba(109, 124, 255, 0.28),
+        rgba(25, 211, 197, 0.13)
+    );
+}
+
+.portfolio-panel {
+    display: none;
+}
+
+.portfolio-panel.active {
+    display: block;
+}
+
+.portfolio-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.portfolio-item {
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+    border-radius: 22px;
+    background: var(--card);
+    box-shadow: var(--shadow);
+    transition: 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    border-color: rgba(109, 124, 255, 0.4);
+}
+
+.portfolio-item.is-hidden {
+    display: none;
+}
+
+.portfolio-media {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    display: block;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    border-bottom: 1px solid var(--card-border);
+    background: #ffffff;
+    cursor: zoom-in;
+}
+
+.portfolio-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.35s ease;
+}
+
+.portfolio-item:hover .portfolio-media img {
+    transform: scale(1.015);
+}
+
+.portfolio-caption {
+    padding: 20px;
+}
+
+.portfolio-caption-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 9px;
+}
+
+.portfolio-caption h3 {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.portfolio-number {
+    min-width: 34px;
+    height: 27px;
+    display: inline-grid;
+    place-items: center;
+    padding: 0 8px;
+    border-radius: 9px;
+    background: rgba(109, 124, 255, 0.13);
+    color: #aab5ff;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.portfolio-caption p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.portfolio-more {
+    min-height: 49px;
+    display: block;
+    margin: 28px auto 0;
+    padding: 0 24px;
+    border: 1px solid rgba(109, 124, 255, 0.35);
+    border-radius: 14px;
+    background: rgba(109, 124, 255, 0.1);
+    color: #dfe4ff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.portfolio-more:hover {
+    transform: translateY(-3px);
+    background: rgba(109, 124, 255, 0.18);
+}
+
+/* Lightbox */
+
+.portfolio-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background: rgba(2, 7, 17, 0.93);
+    backdrop-filter: blur(12px);
+}
+
+.portfolio-lightbox.active {
+    display: flex;
+}
+
+.portfolio-lightbox img {
+    max-width: min(1200px, 94vw);
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+}
+
+.lightbox-close {
+    position: fixed;
+    top: 22px;
+    right: 25px;
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.09);
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 31px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+body.lightbox-open {
+    overflow: hidden;
+}
+
+@media (max-width: 700px) {
+    .portfolio-tabs {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-tab {
+        width: 100%;
+    }
+
+    .portfolio-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-media {
+        aspect-ratio: 16 / 11;
+    }
+
+    .portfolio-lightbox {
+        padding: 16px;
+    }
+
+    .lightbox-close {
+        top: 12px;
+        right: 12px;
+    }
+}
     </style>
 </head>
 
@@ -760,110 +1000,109 @@
         </div>
     </section>
 
-    <section id="projects">
-        <div class="container">
-            <div class="section-head">
-                <div class="section-label">نمونه‌کارهای منتخب</div>
+<section id="projects">
+    <div class="container">
 
-                <h2>
-                    بخشی از پروژه‌ها و نتایجی که می‌توانند اینجا بدرخشند
-                </h2>
-
-                <p>
-                    در مرحله بعد، اسکرین‌شات‌های واقعی سرچ کنسول، رتبه کلمات کلیدی
-                    و توضیحات واقعی هر پروژه را دقیقاً در این بخش قرار می‌دهیم.
-                </p>
+        <div class="section-head">
+            <div class="section-label">
+                نمونه‌کارهای منتخب
             </div>
 
-            <div class="projects-grid">
+            <h2>
+                نتایج واقعی پروژه‌های سئو
+            </h2>
 
-                <article class="project-card">
-                    <div class="project-image">
-                        تصویر Search Console پروژه اول
-                    </div>
-
-                    <div class="project-content">
-                        <span class="project-tag">Organic Growth</span>
-                        <h3>پروژه فروشگاهی</h3>
-                        <p>
-                            تدوین استراتژی، بهینه‌سازی ساختار صفحات و رشد ورودی ارگانیک
-                            از طریق بهبود فنی و محتوایی.
-                        </p>
-
-                        <div class="results">
-                            <span class="result">رشد کلیک</span>
-                            <span class="result">رشد ایمپرشن</span>
-                            <span class="result">بهبود رتبه</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-image">
-                        تصویر رتبه کلمات پروژه دوم
-                    </div>
-
-                    <div class="project-content">
-                        <span class="project-tag">Commercial Keywords</span>
-                        <h3>پروژه خدماتی</h3>
-                        <p>
-                            طراحی صفحات هدف، تحقیق کلمات کلیدی تجاری و افزایش رتبه
-                            برای عبارت‌های با ارزش بالا.
-                        </p>
-
-                        <div class="results">
-                            <span class="result">رتبه ۱ تا ۳</span>
-                            <span class="result">CTR بهتر</span>
-                            <span class="result">لید هدفمند</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-image">
-                        تصویر نمودار رشد پروژه سوم
-                    </div>
-
-                    <div class="project-content">
-                        <span class="project-tag">Recovery & Quick Wins</span>
-                        <h3>پروژه محتوایی</h3>
-                        <p>
-                            شناسایی افت صفحات، اصلاح معماری محتوا و فعال‌سازی فرصت‌های سریع
-                            برای بازگشت رشد.
-                        </p>
-
-                        <div class="results">
-                            <span class="result">رفع افت رتبه</span>
-                            <span class="result">Quick Wins</span>
-                            <span class="result">بهبود صفحات</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-image">
-                        تصویر گزارش فنی پروژه چهارم
-                    </div>
-
-                    <div class="project-content">
-                        <span class="project-tag">Technical SEO</span>
-                        <h3>پروژه بهینه‌سازی فنی</h3>
-                        <p>
-                            رفع مشکلات ایندکس، بهبود ساختار داخلی، بررسی رندر و ارتقای
-                            سلامت فنی سایت.
-                        </p>
-
-                        <div class="results">
-                            <span class="result">Indexation</span>
-                            <span class="result">Crawl Budget</span>
-                            <span class="result">Internal Linking</span>
-                        </div>
-                    </div>
-                </article>
-
-            </div>
+            <p>
+                بخشی از نتایج ثبت‌شده در سرچ کنسول و رتبه‌های
+                به‌دست‌آمده برای کلمات کلیدی هدفمند در گوگل.
+            </p>
         </div>
-    </section>
+
+        <div class="portfolio-tabs">
+
+            <button
+                type="button"
+                class="portfolio-tab active"
+                data-panel="gsc-panel"
+            >
+                نتایج سرچ کنسول
+                <span>۲۰ تصویر</span>
+            </button>
+
+            <button
+                type="button"
+                class="portfolio-tab"
+                data-panel="serp-panel"
+            >
+                رتبه‌های برتر گوگل
+                <span>۲۰ تصویر</span>
+            </button>
+
+        </div>
+
+        <!-- نتایج سرچ کنسول -->
+        <div
+            id="gsc-panel"
+            class="portfolio-panel active"
+        >
+            <div
+                id="gsc-gallery"
+                class="portfolio-gallery"
+            ></div>
+
+            <button
+                type="button"
+                class="portfolio-more"
+                data-gallery="gsc-gallery"
+                data-expanded="false"
+            >
+                مشاهده همه ۲۰ نتیجه سرچ کنسول
+            </button>
+        </div>
+
+        <!-- نتایج رتبه گوگل -->
+        <div
+            id="serp-panel"
+            class="portfolio-panel"
+        >
+            <div
+                id="serp-gallery"
+                class="portfolio-gallery"
+            ></div>
+
+            <button
+                type="button"
+                class="portfolio-more"
+                data-gallery="serp-gallery"
+                data-expanded="false"
+            >
+                مشاهده همه ۲۰ رتبه برتر
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<!-- نمایش بزرگ تصاویر -->
+<div
+    id="portfolio-lightbox"
+    class="portfolio-lightbox"
+    aria-hidden="true"
+>
+    <button
+        type="button"
+        class="lightbox-close"
+        aria-label="بستن تصویر"
+    >
+        ×
+    </button>
+
+    <img
+        id="lightbox-image"
+        src=""
+        alt=""
+    >
+</div>
 
     <section id="contact">
         <div class="container">
@@ -890,6 +1129,329 @@
         طراحی و توسعه نمونه‌کار شخصی میلاد قلی‌نژاد
     </div>
 </footer>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
+    /*
+     * نکته مهم:
+     *
+     * تصاویر سرچ کنسول در پوشه gsc هستند،
+     * اما نام آن‌ها به‌اشتباه serp-01 و... است.
+     *
+     * تصاویر رتبه گوگل در پوشه serp هستند،
+     * اما نام آن‌ها به‌اشتباه gsc-01 و... است.
+     */
+
+    const portfolioData = {
+        gsc: {
+            galleryId: "gsc-gallery",
+            basePath: "assets/portfolio/gsc/serp-",
+            count: 20,
+            title: "نتیجه سرچ کنسول",
+            description:
+                "رشد کلیک و ایمپرشن در بازه ۳ تا ۶ ماهه"
+        },
+
+        serp: {
+            galleryId: "serp-gallery",
+            basePath: "assets/portfolio/serp/gsc-",
+            count: 20,
+            title: "رتبه برتر در گوگل",
+            description:
+                "کسب رتبه‌های برتر گوگل برای کلمات کلیدی هدفمند و تجاری"
+        }
+    };
+
+    const supportedExtensions = [
+        "webp",
+        "jpg",
+        "jpeg",
+        "png"
+    ];
+
+    function formatNumber(number) {
+        return String(number).padStart(2, "0");
+    }
+
+    function createPortfolioImage(basePath, altText) {
+        const image = document.createElement("img");
+
+        image.loading = "lazy";
+        image.decoding = "async";
+        image.alt = altText;
+
+        image.dataset.basePath = basePath;
+        image.dataset.extensionIndex = "0";
+
+        image.src =
+            basePath + "." + supportedExtensions[0];
+
+        image.addEventListener("error", function () {
+            let extensionIndex =
+                Number(image.dataset.extensionIndex) + 1;
+
+            if (
+                extensionIndex <
+                supportedExtensions.length
+            ) {
+                image.dataset.extensionIndex =
+                    String(extensionIndex);
+
+                image.src =
+                    image.dataset.basePath +
+                    "." +
+                    supportedExtensions[extensionIndex];
+            } else {
+                const portfolioItem =
+                    image.closest(".portfolio-item");
+
+                if (portfolioItem) {
+                    portfolioItem.style.display = "none";
+                }
+            }
+        });
+
+        return image;
+    }
+
+    function buildPortfolioGallery(category) {
+        const data = portfolioData[category];
+
+        const gallery =
+            document.getElementById(data.galleryId);
+
+        if (!gallery) {
+            return;
+        }
+
+        for (
+            let imageNumber = 1;
+            imageNumber <= data.count;
+            imageNumber++
+        ) {
+            const formattedNumber =
+                formatNumber(imageNumber);
+
+            const imageBasePath =
+                data.basePath + formattedNumber;
+
+            const portfolioItem =
+                document.createElement("article");
+
+            portfolioItem.className =
+                "portfolio-item" +
+                (imageNumber > 6 ? " is-hidden" : "");
+
+            const mediaButton =
+                document.createElement("button");
+
+            mediaButton.type = "button";
+            mediaButton.className = "portfolio-media";
+            mediaButton.setAttribute(
+                "aria-label",
+                "مشاهده تصویر بزرگ‌تر"
+            );
+
+            const image = createPortfolioImage(
+                imageBasePath,
+                data.title + " شماره " + formattedNumber
+            );
+
+            mediaButton.appendChild(image);
+
+            const caption =
+                document.createElement("div");
+
+            caption.className = "portfolio-caption";
+
+            caption.innerHTML = `
+                <div class="portfolio-caption-top">
+                    <h3>${data.title}</h3>
+
+                    <span class="portfolio-number">
+                        ${formattedNumber}
+                    </span>
+                </div>
+
+                <p>${data.description}</p>
+            `;
+
+            portfolioItem.appendChild(mediaButton);
+            portfolioItem.appendChild(caption);
+            gallery.appendChild(portfolioItem);
+        }
+    }
+
+    buildPortfolioGallery("gsc");
+    buildPortfolioGallery("serp");
+
+    /* تغییر تب‌ها */
+
+    const tabs =
+        document.querySelectorAll(".portfolio-tab");
+
+    const panels =
+        document.querySelectorAll(".portfolio-panel");
+
+    tabs.forEach(function (tab) {
+        tab.addEventListener("click", function () {
+            const targetPanelId =
+                tab.dataset.panel;
+
+            tabs.forEach(function (item) {
+                item.classList.remove("active");
+            });
+
+            panels.forEach(function (panel) {
+                panel.classList.remove("active");
+            });
+
+            tab.classList.add("active");
+
+            const targetPanel =
+                document.getElementById(targetPanelId);
+
+            if (targetPanel) {
+                targetPanel.classList.add("active");
+            }
+        });
+    });
+
+    /* مشاهده همه تصاویر */
+
+    const moreButtons =
+        document.querySelectorAll(".portfolio-more");
+
+    moreButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            const gallery =
+                document.getElementById(
+                    button.dataset.gallery
+                );
+
+            if (!gallery) {
+                return;
+            }
+
+            const extraItems =
+                gallery.querySelectorAll(
+                    ".portfolio-item:nth-child(n+7)"
+                );
+
+            const isExpanded =
+                button.dataset.expanded === "true";
+
+            extraItems.forEach(function (item) {
+                item.classList.toggle(
+                    "is-hidden",
+                    isExpanded
+                );
+            });
+
+            button.dataset.expanded =
+                String(!isExpanded);
+
+            if (isExpanded) {
+                button.textContent =
+                    gallery.id === "gsc-gallery"
+                        ? "مشاهده همه ۲۰ نتیجه سرچ کنسول"
+                        : "مشاهده همه ۲۰ رتبه برتر";
+            } else {
+                button.textContent = "نمایش کمتر";
+            }
+        });
+    });
+
+    /* نمایش تمام‌صفحه تصویر */
+
+    const lightbox =
+        document.getElementById(
+            "portfolio-lightbox"
+        );
+
+    const lightboxImage =
+        document.getElementById(
+            "lightbox-image"
+        );
+
+    const closeButton =
+        document.querySelector(
+            ".lightbox-close"
+        );
+
+    function openLightbox(image) {
+        lightboxImage.src = image.src;
+        lightboxImage.alt = image.alt;
+
+        lightbox.classList.add("active");
+        lightbox.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+        document.body.classList.add(
+            "lightbox-open"
+        );
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove("active");
+
+        lightbox.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        lightboxImage.src = "";
+
+        document.body.classList.remove(
+            "lightbox-open"
+        );
+    }
+
+    document
+        .querySelectorAll(".portfolio-media")
+        .forEach(function (mediaButton) {
+            mediaButton.addEventListener(
+                "click",
+                function () {
+                    const image =
+                        mediaButton.querySelector("img");
+
+                    if (image) {
+                        openLightbox(image);
+                    }
+                }
+            );
+        });
+
+    closeButton.addEventListener(
+        "click",
+        closeLightbox
+    );
+
+    lightbox.addEventListener(
+        "click",
+        function (event) {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        }
+    );
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+            if (
+                event.key === "Escape" &&
+                lightbox.classList.contains("active")
+            ) {
+                closeLightbox();
+            }
+        }
+    );
+
+});
+</script>
 </body>
 </html>
