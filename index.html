@@ -1,15 +1,941 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>Milad Gholinejad</title>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="نمونه‌کار و رزومه میلاد قلی‌نژاد، متخصص سئو و بهینه‌سازی سایت"
+    >
+
+    <title>میلاد قلی‌نژاد | متخصص سئو</title>
+
+    <style>
+        :root {
+            --bg: #07101f;
+            --bg-light: #0d1930;
+            --card: rgba(255, 255, 255, 0.07);
+            --card-border: rgba(255, 255, 255, 0.12);
+            --primary: #6d7cff;
+            --secondary: #19d3c5;
+            --text: #f7f9ff;
+            --muted: #abb6ca;
+            --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+            --radius: 24px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background:
+                radial-gradient(
+                    circle at 15% 10%,
+                    rgba(109, 124, 255, 0.22),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(25, 211, 197, 0.15),
+                    transparent 28%
+                ),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.9;
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(18px);
+            background: rgba(7, 16, 31, 0.78);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nav {
+            min-height: 76px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .brand {
+            font-size: 19px;
+            font-weight: 800;
+        }
+
+        .brand span {
+            color: var(--secondary);
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .menu a {
+            transition: 0.25s ease;
+        }
+
+        .menu a:hover {
+            color: var(--text);
+        }
+
+        .hero {
+            min-height: calc(100vh - 76px);
+            display: grid;
+            align-items: center;
+            padding: 90px 0;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            align-items: center;
+            gap: 70px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(25, 211, 197, 0.3);
+            border-radius: 999px;
+            background: rgba(25, 211, 197, 0.08);
+            color: #81f1e8;
+            font-size: 13px;
+        }
+
+        .badge::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--secondary);
+            box-shadow: 0 0 15px var(--secondary);
+        }
+
+        h1 {
+            font-size: clamp(42px, 7vw, 78px);
+            line-height: 1.25;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+        }
+
+        h1 span {
+            background: linear-gradient(
+                90deg,
+                var(--secondary),
+                #91a5ff
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-description {
+            max-width: 700px;
+            color: var(--muted);
+            font-size: 18px;
+            margin-bottom: 34px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 52px;
+            padding: 0 24px;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 700;
+            transition: 0.25s ease;
+        }
+
+        .button-primary {
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                #835fff
+            );
+            box-shadow: 0 14px 35px rgba(109, 124, 255, 0.28);
+        }
+
+        .button-secondary {
+            border: 1px solid var(--card-border);
+            background: var(--card);
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+        }
+
+        .profile-card {
+            position: relative;
+            padding: 28px;
+            border-radius: 30px;
+            border: 1px solid var(--card-border);
+            background: linear-gradient(
+                145deg,
+                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0.03)
+            );
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .profile-card::before {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            top: -70px;
+            left: -70px;
+            border-radius: 50%;
+            background: rgba(109, 124, 255, 0.25);
+            filter: blur(25px);
+        }
+
+        .profile-placeholder {
+            position: relative;
+            min-height: 310px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            text-align: center;
+            border-radius: 22px;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            background:
+                linear-gradient(
+                    160deg,
+                    rgba(109, 124, 255, 0.14),
+                    rgba(25, 211, 197, 0.06)
+                );
+        }
+
+        .profile-icon {
+            width: 105px;
+            height: 105px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                var(--secondary)
+            );
+            font-size: 42px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-placeholder p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-head {
+            max-width: 720px;
+            margin-bottom: 42px;
+        }
+
+        .section-label {
+            color: var(--secondary);
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: clamp(30px, 5vw, 48px);
+            line-height: 1.4;
+            margin-bottom: 14px;
+        }
+
+        .section-head p {
+            color: var(--muted);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .stat-card,
+        .skill-card,
+        .project-card,
+        .contact-card {
+            border: 1px solid var(--card-border);
+            background: var(--card);
+            backdrop-filter: blur(14px);
+            box-shadow: var(--shadow);
+        }
+
+        .stat-card {
+            padding: 26px;
+            border-radius: 20px;
+        }
+
+        .stat-number {
+            display: block;
+            color: var(--secondary);
+            font-size: 34px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 9px;
+        }
+
+        .stat-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            padding: 26px;
+            border-radius: var(--radius);
+            transition: 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(109, 124, 255, 0.4);
+        }
+
+        .skill-icon {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 18px;
+            border-radius: 14px;
+            background: rgba(109, 124, 255, 0.13);
+            font-size: 23px;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .skill-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .project-card {
+            overflow: hidden;
+            border-radius: 26px;
+            transition: 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .project-image {
+            min-height: 250px;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(109, 124, 255, 0.2),
+                    rgba(25, 211, 197, 0.08)
+                );
+            color: var(--muted);
+            text-align: center;
+        }
+
+        .project-content {
+            padding: 28px;
+        }
+
+        .project-tag {
+            display: inline-flex;
+            margin-bottom: 12px;
+            padding: 5px 11px;
+            border-radius: 999px;
+            background: rgba(25, 211, 197, 0.09);
+            color: #81f1e8;
+            font-size: 12px;
+        }
+
+        .project-content h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .project-content p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .results {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .result {
+            padding: 8px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+            color: #dce4f3;
+            font-size: 12px;
+        }
+
+        .contact-card {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 30px;
+            padding: 42px;
+            border-radius: 28px;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(109, 124, 255, 0.16),
+                    rgba(25, 211, 197, 0.08)
+                );
+        }
+
+        .contact-card p {
+            color: var(--muted);
+            margin-top: 8px;
+        }
+
+        footer {
+            padding: 26px 0 40px;
+            color: var(--muted);
+            text-align: center;
+            font-size: 13px;
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-card {
+                max-width: 560px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .menu {
+                display: none;
+            }
+
+            .hero {
+                padding: 64px 0;
+            }
+
+            h1 {
+                font-size: 45px;
+                letter-spacing: -1px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 75px 0;
+            }
+
+            .stats,
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-card {
+                grid-template-columns: 1fr;
+                padding: 28px;
+            }
+
+            .button {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<h1>سلام 👋</h1>
+<header class="header">
+    <div class="container nav">
 
-<p>این اولین سایت نمونه کار من است.</p>
+        <a href="#" class="brand">
+            میلاد <span>قلی‌نژاد</span>
+        </a>
+
+        <nav class="menu">
+            <a href="#about">درباره من</a>
+            <a href="#skills">مهارت‌ها</a>
+            <a href="#projects">نمونه‌کارها</a>
+            <a href="#contact">ارتباط</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <section class="hero">
+        <div class="container hero-grid">
+
+            <div>
+
+                <div class="badge">
+                    آماده همکاری در پروژه‌های حرفه‌ای سئو
+                </div>
+
+                <h1>
+                    رشد واقعی سایت با
+                    <span>استراتژی داده‌محور سئو</span>
+                </h1>
+
+                <p class="hero-description">
+                    من میلاد قلی‌نژاد، متخصص سئو با بیش از ۵ سال
+                    تجربه در تحلیل، تدوین استراتژی و رشد سایت‌ها
+                    در نتایج گوگل هستم. تمرکز من روی افزایش
+                    ترافیک هدفمند، بهبود رتبه و تبدیل ورودی گوگل
+                    به مشتری است.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a href="#projects" class="button button-primary">
+                        مشاهده نمونه‌کارها
+                    </a>
+
+                    <a href="#contact" class="button button-secondary">
+                        ارتباط با من
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="profile-card">
+
+                <div class="profile-placeholder">
+
+                    <div class="profile-icon">
+                        👨‍💻
+                    </div>
+
+                    <div>
+                        <strong>Milad Gholinejad</strong>
+
+                        <p>
+                            SEO Specialist & Project Manager
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+
+            <div class="section-head">
+
+                <div class="section-label">
+                    درباره من
+                </div>
+
+                <h2>
+                    سئو برای من فقط رتبه گرفتن نیست
+                </h2>
+
+                <p>
+                    هدف من ساختن مسیری پایدار برای جذب مخاطب،
+                    افزایش فروش و توسعه کسب‌وکار از طریق گوگل است.
+                    تصمیم‌های سئو را بر اساس داده، رفتار کاربر،
+                    شناخت رقبا و اهداف تجاری پروژه می‌گیرم.
+                </p>
+
+            </div>
+
+            <div class="stats">
+
+                <div class="stat-card">
+                    <span class="stat-number">۵+</span>
+                    <p>سال تجربه تخصصی در سئو</p>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-number">۲۰+</span>
+                    <p>پروژه بررسی و مدیریت‌شده</p>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-number">۱۰۰+</span>
+                    <p>کلمه کلیدی با رتبه برتر</p>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-number">360°</span>
+                    <p>تحلیل کامل فنی، محتوایی و رقبا</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+
+            <div class="section-head">
+
+                <div class="section-label">
+                    تخصص‌ها
+                </div>
+
+                <h2>
+                    مهارت‌هایی که به رشد پروژه کمک می‌کنند
+                </h2>
+
+            </div>
+
+            <div class="skills-grid">
+
+                <article class="skill-card">
+                    <div class="skill-icon">🔎</div>
+
+                    <h3>تحقیق کلمات کلیدی</h3>
+
+                    <p>
+                        استخراج فرصت‌های واقعی جستجو، تحلیل قصد
+                        کاربر و طراحی ساختار هدفمند صفحات.
+                    </p>
+                </article>
+
+                <article class="skill-card">
+                    <div class="skill-icon">🧭</div>
+
+                    <h3>استراتژی سئو</h3>
+
+                    <p>
+                        تدوین نقشه راه اجرایی متناسب با بازار،
+                        بودجه، رقبا و اهداف تجاری پروژه.
+                    </p>
+                </article>
+
+                <article class="skill-card">
+                    <div class="skill-icon">⚙️</div>
+
+                    <h3>سئو تکنیکال</h3>
+
+                    <p>
+                        بررسی Crawl، Index، سرعت، ساختار URL،
+                        اسکیما و خطاهای فنی سایت.
+                    </p>
+                </article>
+
+                <article class="skill-card">
+                    <div class="skill-icon">✍️</div>
+
+                    <h3>استراتژی محتوا</h3>
+
+                    <p>
+                        طراحی کلاستر محتوایی، بریف حرفه‌ای و
+                        بهینه‌سازی محتوا بر اساس نیاز کاربر.
+                    </p>
+                </article>
+
+                <article class="skill-card">
+                    <div class="skill-icon">📊</div>
+
+                    <h3>تحلیل داده</h3>
+
+                    <p>
+                        تحلیل اطلاعات Search Console، GA4 و
+                        ابزارهای تخصصی برای تصمیم‌گیری دقیق‌تر.
+                    </p>
+                </article>
+
+                <article class="skill-card">
+                    <div class="skill-icon">🚀</div>
+
+                    <h3>رشد و بهینه‌سازی</h3>
+
+                    <p>
+                        شناسایی Quick Winها، بهبود CTR، بازیابی
+                        افت رتبه و افزایش ترافیک هدفمند.
+                    </p>
+                </article>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+
+            <div class="section-head">
+
+                <div class="section-label">
+                    نمونه‌کارهای منتخب
+                </div>
+
+                <h2>
+                    بخشی از نتایج پروژه‌های سئو
+                </h2>
+
+                <p>
+                    در مرحله بعد تصاویر واقعی سرچ کنسول و رتبه
+                    کلمات کلیدی را در این بخش قرار می‌دهیم.
+                </p>
+
+            </div>
+
+            <div class="projects-grid">
+
+                <article class="project-card">
+
+                    <div class="project-image">
+                        تصویر Search Console پروژه اول
+                    </div>
+
+                    <div class="project-content">
+
+                        <span class="project-tag">
+                            رشد ترافیک ارگانیک
+                        </span>
+
+                        <h3>
+                            پروژه فروشگاهی
+                        </h3>
+
+                        <p>
+                            تدوین استراتژی، اصلاح ساختار صفحات،
+                            بهینه‌سازی محتوا و افزایش ورودی
+                            هدفمند از گوگل.
+                        </p>
+
+                        <div class="results">
+                            <span class="result">رشد کلیک</span>
+                            <span class="result">رشد ایمپرشن</span>
+                            <span class="result">افزایش رتبه</span>
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <article class="project-card">
+
+                    <div class="project-image">
+                        تصویر رتبه کلمات پروژه دوم
+                    </div>
+
+                    <div class="project-content">
+
+                        <span class="project-tag">
+                            رتبه‌های برتر گوگل
+                        </span>
+
+                        <h3>
+                            پروژه خدماتی
+                        </h3>
+
+                        <p>
+                            تحقیق کلمات کلیدی، طراحی صفحات
+                            فرود و بهینه‌سازی داخلی برای
+                            عبارت‌های تجاری رقابتی.
+                        </p>
+
+                        <div class="results">
+                            <span class="result">رتبه ۱ تا ۳</span>
+                            <span class="result">لید هدفمند</span>
+                            <span class="result">CTR بهتر</span>
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <article class="project-card">
+
+                    <div class="project-image">
+                        تصویر نمودار رشد پروژه سوم
+                    </div>
+
+                    <div class="project-content">
+
+                        <span class="project-tag">
+                            بازطراحی استراتژی
+                        </span>
+
+                        <h3>
+                            پروژه محتوایی
+                        </h3>
+
+                        <p>
+                            تحلیل افت صفحات، شناسایی فرصت‌های
+                            سریع و اصلاح معماری محتوایی سایت.
+                        </p>
+
+                        <div class="results">
+                            <span class="result">رفع افت رتبه</span>
+                            <span class="result">Quick Wins</span>
+                            <span class="result">رشد صفحات</span>
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <article class="project-card">
+
+                    <div class="project-image">
+                        تصویر گزارش فنی پروژه چهارم
+                    </div>
+
+                    <div class="project-content">
+
+                        <span class="project-tag">
+                            Technical SEO
+                        </span>
+
+                        <h3>
+                            پروژه بهینه‌سازی فنی
+                        </h3>
+
+                        <p>
+                            رفع مشکلات ایندکس، صفحات تکراری،
+                            لینک‌سازی داخلی و بهبود ساختار فنی.
+                        </p>
+
+                        <div class="results">
+                            <span class="result">Indexation</span>
+                            <span class="result">Crawl</span>
+                            <span class="result">Internal Link</span>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+
+            <div class="contact-card">
+
+                <div>
+                    <h2>
+                        برای همکاری آماده‌ام
+                    </h2>
+
+                    <p>
+                        برای فرصت‌های شغلی، همکاری پروژه‌ای یا
+                        دریافت اطلاعات بیشتر با من در ارتباط باشید.
+                    </p>
+                </div>
+
+                <a
+                    href="mailto:YOUR-EMAIL@example.com"
+                    class="button button-primary"
+                >
+                    ارسال ایمیل
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        طراحی و توسعه نمونه‌کار شخصی میلاد قلی‌نژاد
+    </div>
+</footer>
 
 </body>
 </html>
